@@ -35,7 +35,7 @@ Stream text with GPT-4o, transcribe and translate audio with Whisper, or create 
       - [Vision](#vision)
       - [JSON Mode](#json-mode)
     - [Functions](#functions)
-    - [Edits](#edits)
+    - [Completions](#completions)
     - [Embeddings](#embeddings)
     - [Batches](#batches)
     - [Files](#files)
@@ -43,6 +43,7 @@ Stream text with GPT-4o, transcribe and translate audio with Whisper, or create 
     - [Assistants](#assistants)
     - [Threads and Messages](#threads-and-messages)
     - [Runs](#runs)
+      - [Create and Run](#create-and-run)
       - [Runs involving function tools](#runs-involving-function-tools)
     - [Image Generation](#image-generation)
       - [DALL·E 2](#dalle-2)
@@ -54,7 +55,7 @@ Stream text with GPT-4o, transcribe and translate audio with Whisper, or create 
       - [Translate](#translate)
       - [Transcribe](#transcribe)
       - [Speech](#speech)
-    - [Errors](#errors)
+    - [Errors](#errors-1)
   - [Development](#development)
   - [Release](#release)
   - [Contributing](#contributing)
@@ -103,7 +104,7 @@ For a quick test you can pass your token directly to a new client:
 ```ruby
 client = OpenAI::Client.new(
   access_token: "access_token_goes_here",
-  log_errors: true # Highly recommended in development, so you can see what errors OpenAI is returning. Not recommended in production.
+  log_errors: true # Highly recommended in development, so you can see what errors OpenAI is returning. Not recommended in production because it could leak private data to your logs.
 )
 ```
 
@@ -115,7 +116,7 @@ For a more robust setup, you can configure the gem with your API keys, for examp
 OpenAI.configure do |config|
   config.access_token = ENV.fetch("OPENAI_ACCESS_TOKEN")
   config.organization_id = ENV.fetch("OPENAI_ORGANIZATION_ID") # Optional
-  config.log_errors = true # Highly recommended in development, so you can see what errors OpenAI is returning. Not recommended in production.
+  config.log_errors = true # Highly recommended in development, so you can see what errors OpenAI is returning. Not recommended in production because it could leak private data to your logs.
 end
 ```
 
